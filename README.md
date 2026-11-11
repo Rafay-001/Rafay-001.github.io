@@ -4,7 +4,7 @@
 
 Business Intelligence and Data Analyst with 3+ years of experience building enterprise Power BI dashboards and workforce analytics for a US-based professional services firm. MSc in Data Analytics for Business & Economics (HSE University, fully-funded Government Scholarship). Currently completing Microsoft Fabric Analytics Engineer (DP-600).
 
-📍 Based in Karachi, Pakistan — open to roles onsite/hybrid/remote in Pakistan, and to work-sponsored relocation to Saudi Arabia / GCC.
+📍 Based in Karachi, Pakistan — open to roles onsite/hybrid/remote in Pakistan, and to work-sponsored relocation to anywhere globally.
 
 ---
 
