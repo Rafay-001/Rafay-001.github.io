@@ -38,4 +38,4 @@ Multi-page Power BI dashboard covering executive summary, product/order analysis
 ## Contact
 - LinkedIn: [linkedin.com/in/rafay-ciddiqui](https://www.linkedin.com/in/rafay-ciddiqui)
 - GitHub: [github.com/Rafay-001](https://github.com/Rafay-001)
-- Email: rafay.ciddiqui@gmail.com
+- Email: rafaysiddiqui239@gmail.com
