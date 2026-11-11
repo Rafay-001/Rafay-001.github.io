@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rafay Siddiqui · Data Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Rafay Siddiqui: Power BI and people analytics specialist. Dashboards, credit risk analysis and workforce reporting.">
+<meta property="og:title" content="Rafay Siddiqui · Data Portfolio">
+<meta property="og:description" content="Power BI dashboards, credit risk analysis and HR analytics.">
+<meta property="og:image" content="assets/img/loan-cohort.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a single reading column (~1120px) — hero with real KPI figures, then case studies that alternate text/screens, then skills and contact. */
+:root {
+  --bg: #f4f6f5;
+  --surface: #ffffff;
+  --ink: #13212b;
+  --muted: #56656e;
+  --line: #d8dfdd;
+  --accent: #0e6f68;        /* ledger teal */
+  --accent-soft: #dcefeb;
+  --mark: #c9861a;          /* marigold highlight, used sparingly */
+  --shot-bg: #e9eeec;
+  --f-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --f-body: "Instrument Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --wrap: 1120px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1519; --surface: #151f24; --ink: #e7eeec; --muted: #9aaab0; --line: #26343a;
+    --accent: #4fc3b5; --accent-soft: #163632; --mark: #e8ad4c; --shot-bg: #1b272c;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1519; --surface: #151f24; --ink: #e7eeec; --muted: #9aaab0; --line: #26343a;
+  --accent: #4fc3b5; --accent-soft: #163632; --mark: #e8ad4c; --shot-bg: #1b272c;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font: 400 17px/1.6 var(--f-body);
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; line-height: 1.1; }
+p { margin: 0; }
+
+.wrap {
+  max-width: var(--wrap); margin: 0 auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+.label {
+  font: 500 12px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted);
+}
+
+/* ---------- nav ---------- */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.nav {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
+.brand { font: 700 18px/1 var(--f-display); color: var(--ink); text-decoration: none; letter-spacing: -.01em; }
+.brand span { color: var(--accent); }
+.nav ul { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; }
+.nav ul a { color: var(--muted); text-decoration: none; font-size: 15px; font-weight: 500; }
+.nav ul a:hover { color: var(--ink); }
+@media (max-width: 640px) { .nav ul li:not(:last-child) { display: none; } }
+
+/* ---------- hero ---------- */
+.hero { padding-block: 72px 56px; }
+.hero .status { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 28px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+.hero h1 {
+  font-size: clamp(44px, 8.5vw, 104px); font-weight: 800; letter-spacing: -.035em; line-height: .95;
+}
+.hero h1 .role { display: block; font-weight: 500; color: var(--muted); font-size: .42em; letter-spacing: -.015em; margin-top: 18px; line-height: 1.15; }
+.hero h1 .role em { font-style: normal; color: var(--accent); }
+.hero .lede { max-width: 62ch; margin-top: 28px; font-size: 19px; color: var(--ink); }
+.hero .lede b { font-weight: 600; }
+.hero .where { margin-top: 14px; color: var(--muted); font-size: 15.5px; max-width: 62ch; }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 999px;
+  font: 600 15px/1 var(--f-body); text-decoration: none; border: 1px solid var(--line); color: var(--ink); background: var(--surface);
+  transition: border-color .15s, transform .15s;
+}
+.btn:hover { border-color: var(--accent); transform: translateY(-1px); }
+.btn.primary { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.btn svg { width: 16px; height: 16px; flex: none; }
+
+/* KPI strip: figures pulled from the projects below */
+.kpis {
+  margin-top: 64px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 2px solid var(--ink); border-bottom: 1px solid var(--line);
+}
+.kpi { padding: 20px 20px 22px 0; display: grid; gap: 6px; align-content: start; }
+.kpi + .kpi { padding-left: 20px; border-left: 1px solid var(--line); }
+.kpi .v { font: 700 clamp(30px, 4vw, 44px)/1 var(--f-display); letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.kpi .v small { font-size: .5em; color: var(--muted); font-weight: 500; margin-left: 2px; }
+.kpi .d { font-size: 14px; color: var(--muted); line-height: 1.4; }
+.kpi .src { font: 500 11px/1.2 var(--f-mono); color: var(--accent); letter-spacing: .04em; }
+@media (max-width: 820px) {
+  .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .kpi:nth-child(3) { padding-left: 0; border-left: 0; }
+  .kpi:nth-child(n+3) { border-top: 1px solid var(--line); }
+}
+
+/* ---------- sections ---------- */
+section.block { padding-block: 72px; }
+.sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 44px; }
+.sec-head h2 { font-size: clamp(32px, 4.6vw, 52px); font-weight: 700; letter-spacing: -.025em; }
+.sec-head p { color: var(--muted); max-width: 46ch; }
+
+/* ---------- case studies ---------- */
+.case { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 48px; padding-block: 56px; border-top: 1px solid var(--line); }
+.case:first-of-type { border-top: 0; padding-top: 0; }
+.case.flip .case-text { order: 2; }
+.case-text { min-width: 0; display: grid; gap: 18px; align-content: start; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { font: 500 12px/1 var(--f-mono); padding: 6px 9px; border-radius: 6px; background: var(--accent-soft); color: var(--accent); }
+.tag.plain { background: transparent; border: 1px solid var(--line); color: var(--muted); }
+.case h3 { font-size: clamp(26px, 3vw, 34px); font-weight: 700; letter-spacing: -.02em; }
+.case .summary { color: var(--ink); }
+.facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--line); }
+.fact { padding: 14px 12px 14px 0; border-bottom: 1px solid var(--line); display: grid; gap: 2px; }
+.fact:nth-child(even) { padding-left: 14px; border-left: 1px solid var(--line); }
+.fact b { font: 700 24px/1.1 var(--f-display); font-variant-numeric: tabular-nums; letter-spacing: -.01em; }
+.fact b.hot { color: var(--mark); }
+.fact span { font-size: 13.5px; color: var(--muted); line-height: 1.35; }
+.case ul.points { margin: 0; padding-left: 18px; display: grid; gap: 8px; color: var(--ink); font-size: 16px; }
+.case ul.points li::marker { color: var(--accent); }
+details { border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+details summary { cursor: pointer; padding: 12px 16px; font-weight: 600; font-size: 15px; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+details summary::-webkit-details-marker { display: none; }
+details summary::after { content: "+"; font: 500 18px/1 var(--f-mono); color: var(--accent); }
+details[open] summary::after { content: "–"; }
+details .inner { padding: 0 16px 16px; display: grid; gap: 10px; font-size: 15.5px; }
+details ol { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+.links { display: flex; flex-wrap: wrap; gap: 18px; font-weight: 600; font-size: 15px; }
+.links a { text-decoration: none; }
+.links a:hover { text-decoration: underline; }
+
+.case-media { min-width: 0; display: grid; gap: 12px; align-content: start; }
+.shot {
+  appearance: none; border: 1px solid var(--line); border-radius: 12px; padding: 0; overflow: hidden; cursor: zoom-in;
+  background: var(--shot-bg); width: 100%; display: block; position: relative;
+  transition: border-color .15s, transform .2s;
+}
+.shot:hover { border-color: var(--accent); }
+.shot img { width: 100%; height: auto; }
+.shot .cap {
+  position: absolute; left: 10px; bottom: 10px; font: 500 11.5px/1 var(--f-mono); letter-spacing: .03em;
+  background: color-mix(in srgb, var(--ink) 82%, transparent); color: var(--bg); padding: 6px 8px; border-radius: 6px;
+}
+.thumbs { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px; }
+.thumbs .shot { border-radius: 8px; }
+.thumbs .shot img { aspect-ratio: 16 / 9; object-fit: cover; object-position: top left; }
+.thumbs .shot .cap { left: 6px; bottom: 6px; font-size: 10px; padding: 4px 6px; }
+
+/* Movies: no screenshot in repo, so show the report's page map */
+.report-map { border: 1px solid var(--line); border-radius: 12px; background: var(--surface); overflow: hidden; }
+.report-map .bar { display: flex; gap: 6px; padding: 10px 14px; border-bottom: 1px solid var(--line); align-items: center; }
+.report-map .bar i { width: 9px; height: 9px; border-radius: 50%; background: var(--line); }
+.report-map .bar span { margin-left: 8px; font: 500 12px/1 var(--f-mono); color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pages { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.page { padding: 18px 16px; display: grid; gap: 12px; align-content: start; min-width: 0; }
+.page + .page { border-left: 1px solid var(--line); }
+.page h4 { margin: 0; font: 600 15px/1.25 var(--f-display); }
+.page ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 7px; }
+.page li { font-size: 13.5px; color: var(--muted); display: grid; gap: 4px; line-height: 1.35; }
+.page li code { justify-self: start; font: 500 10.5px/1 var(--f-mono); color: var(--accent); background: var(--accent-soft); padding: 3px 5px; border-radius: 4px; }
+.case.wide-media { grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); }
+.measures { border-top: 1px solid var(--line); padding: 14px 16px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.measures .label { margin-right: 6px; }
+.measures code { font: 500 12px/1 var(--f-mono); padding: 6px 8px; border: 1px solid var(--line); border-radius: 6px; color: var(--ink); }
+@media (max-width: 640px) { .pages { grid-template-columns: 1fr; } .page + .page { border-left: 0; border-top: 1px solid var(--line); } }
+
+@media (max-width: 900px) {
+  .case, .case.wide-media { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .case.flip .case-text { order: 0; }
+}
+
+/* ---------- skills ---------- */
+.skills { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border-top: 2px solid var(--ink); }
+.skill { padding: 22px 20px 26px 0; display: grid; gap: 14px; align-content: start; min-width: 0; }
+.skill + .skill { padding-left: 20px; border-left: 1px solid var(--line); }
+.skill h3 { font-size: 19px; font-weight: 700; }
+.skill ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; color: var(--muted); font-size: 15.5px; }
+@media (max-width: 900px) {
+  .skills { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .skill:nth-child(3) { padding-left: 0; border-left: 0; }
+  .skill:nth-child(n+3) { border-top: 1px solid var(--line); }
+}
+@media (max-width: 480px) {
+  .skills { grid-template-columns: 1fr; }
+  .skill + .skill { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
+}
+
+/* ---------- background ---------- */
+.bg-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 26px; display: grid; gap: 18px; align-content: start; }
+.entry { display: grid; gap: 4px; }
+.entry + .entry { padding-top: 18px; border-top: 1px solid var(--line); }
+.entry h3 { font-size: 19px; font-weight: 700; line-height: 1.25; }
+.entry p { color: var(--muted); font-size: 15.5px; }
+.pill { justify-self: start; font: 500 11.5px/1 var(--f-mono); padding: 5px 8px; border-radius: 999px; border: 1px solid var(--mark); color: var(--mark); }
+.pill.done { border-color: var(--accent); color: var(--accent); }
+@media (max-width: 760px) { .bg-grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- contact ---------- */
+.contact { background: var(--ink); color: var(--bg); }
+.contact .wrap { padding-block: 80px; display: grid; gap: 28px; }
+.contact h2 { font-size: clamp(36px, 6vw, 68px); font-weight: 800; letter-spacing: -.03em; max-width: 16ch; }
+.contact p { max-width: 58ch; opacity: .8; font-size: 18px; }
+.contact .row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.contact .btn { background: transparent; color: var(--bg); border-color: color-mix(in srgb, var(--bg) 35%, transparent); }
+.contact .btn:hover { border-color: var(--bg); }
+.contact .btn.primary { background: var(--bg); color: var(--ink); border-color: var(--bg); }
+.email { font: 500 15px/1 var(--f-mono); user-select: all; opacity: .85; }
+footer { background: var(--ink); color: var(--bg); }
+footer .wrap { padding-block: 22px 32px; border-top: 1px solid color-mix(in srgb, var(--bg) 18%, transparent); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 13.5px; opacity: .7; }
+
+/* ---------- lightbox ---------- */
+dialog.lb { border: 0; padding: 0; background: transparent; max-width: min(1400px, 96vw); width: 100%; }
+dialog.lb::backdrop { background: rgba(8, 14, 17, .86); }
+dialog.lb figure { margin: 0; display: grid; gap: 12px; }
+dialog.lb img { width: 100%; height: auto; max-height: 82vh; object-fit: contain; border-radius: 10px; background: #fff; }
+dialog.lb figcaption { color: #e7eeec; font: 500 14px/1.4 var(--f-body); display: flex; justify-content: space-between; gap: 12px; align-items: center; }
+dialog.lb button { font: 600 14px/1 var(--f-body); background: #e7eeec; color: #13212b; border: 0; border-radius: 999px; padding: 10px 16px; cursor: pointer; }
+
+/* gentle load-in from a visible resting state */
+@keyframes rise { from { transform: translateY(10px); } to { transform: none; } }
+.hero h1, .hero .lede, .kpis { animation: rise .7s cubic-bezier(.2,.7,.2,1) both; }
+.hero .lede { animation-delay: .06s; }
+.kpis { animation-delay: .12s; }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="#top">Rafay Siddiqui<span>.</span></a>
+    <ul>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#background">Background</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="top">
+  <header class="hero">
+    <div class="wrap">
+      <div class="status"><span class="dot" aria-hidden="true"></span><span class="label">Open to BI &amp; analytics roles</span></div>
+      <h1>Rafay Siddiqui
+        <span class="role">Power BI &amp; <em>People Analytics</em> Specialist</span>
+      </h1>
+      <p class="lede">I build the dashboards and analyses that leadership actually uses. <b>3+ years</b> of enterprise Power BI and workforce analytics for a US-based professional services firm, an <b>MSc in Data Analytics</b> from HSE University on a fully funded government scholarship, and currently completing Microsoft Fabric Analytics Engineer (DP-600).</p>
+      <p class="where">Based in Karachi, Pakistan. Open to onsite, hybrid or remote roles in Pakistan, and to work-sponsored relocation anywhere.</p>
+      <div class="cta">
+        <a class="btn primary" href="#work">See my work
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 3v10m0 0 4-4m-4 4L4 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a class="btn" href="https://www.linkedin.com/in/rafay-ciddiqui" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://github.com/Rafay-001" target="_blank" rel="noopener">GitHub</a>
+      </div>
+
+      <div class="kpis" aria-label="Figures from my projects">
+        <div class="kpi"><span class="src">CREDIT RISK</span><span class="v">55.7<small>K</small></span><span class="d">loans traced from plan to payment</span></div>
+        <div class="kpi"><span class="src">CREDIT RISK</span><span class="v">$106.8<small>M</small></span><span class="d">portfolio value at risk quantified</span></div>
+        <div class="kpi"><span class="src">HR ATTRITION</span><span class="v">1,470</span><span class="d">employee records modelled in Power BI</span></div>
+        <div class="kpi"><span class="src">SUPPLY CHAIN</span><span class="v">3<small>yrs</small></span><span class="d">of sales data modelled with DAX time intelligence</span></div>
+      </div>
+    </div>
+  </header>
+
+  <section class="block" id="work" aria-labelledby="work-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="work-h">Selected work</h2>
+        <p>Each project starts from a business question and ends with a recommendation. Click any screen to enlarge it.</p>
+      </div>
+
+      <!-- 1. Credit risk -->
+      <article class="case">
+        <div class="case-text">
+          <div class="tags"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Seaborn</span><span class="tag plain">Banking &amp; credit risk</span></div>
+          <h3>Loan Portfolio Delinquency &amp; Credit Risk</h3>
+          <p class="summary">Repayment behaviour across a lending portfolio, built to support risk monitoring and collections. It goes past simple delinquency counts into DPD bucketing, value-at-risk and a cure-vs-chronic split.</p>
+          <div class="facts">
+            <div class="fact"><b>51.88%</b><span>of loans currently delinquent</span></div>
+            <div class="fact"><b class="hot">$106.8M</b><span>at risk, 18.94% of portfolio value</span></div>
+            <div class="fact"><b>33.51%</b><span>of loans in the 90+ DPD (NPL) bucket</span></div>
+            <div class="fact"><b>47.4%</b><span>of ever-delinquent loans eventually cure</span></div>
+          </div>
+          <p>The key finding: 99.3% of loans show a shortfall at the first checkpoint, so a first-checkpoint rule would flag almost the entire book. Predicting cure likelihood is the more useful target.</p>
+          <details>
+            <summary>Method</summary>
+            <div class="inner">
+              <ol>
+                <li>Validated data quality and excluded 28 loans (0.05%) with implausible planned-to-issued ratios.</li>
+                <li>As-of matched cumulative planned vs. actual payments per loan, avoiding fan-out from ID-only joins.</li>
+                <li>Bucketed by days past due: Current, 1–29, 30–59, 60–89, 90+.</li>
+                <li>Took the portfolio snapshot at each loan's latest due checkpoint to avoid double counting.</li>
+                <li>Classified loans as never delinquent, cured or chronic.</li>
+              </ol>
+            </div>
+          </details>
+          <details>
+            <summary>Recommendations</summary>
+            <div class="inner">
+              <ul class="points">
+                <li>Build a cure-prediction model instead of flagging on first-checkpoint status.</li>
+                <li>Prioritise the 90+ DPD segment for active collections.</li>
+                <li>Investigate risk drift across June–August cohorts (49.97% → 53.99%).</li>
+                <li>Rank collections by dollar exposure, not loan count.</li>
+              </ul>
+            </div>
+          </details>
+          <div class="links">
+            <a href="https://github.com/Rafay-001/credit-risk-and-loan-delinquency-analysis" target="_blank" rel="noopener">Repository ↗</a>
+            <a href="https://github.com/Rafay-001/credit-risk-and-loan-delinquency-analysis/blob/main/Loan_delinquency_credit_risk_analysis.ipynb" target="_blank" rel="noopener">Notebook ↗</a>
+          </div>
+        </div>
+        <div class="case-media">
+          <button class="shot" type="button" data-full="assets/img/loan-cohort.webp" data-caption="Delinquency rate by origination cohort and checkpoint month">
+            <img src="assets/img/loan-cohort.webp" width="1600" height="800" alt="Heatmap of delinquency rate by loan origination cohort and checkpoint month, falling from about 91% to under 25%" loading="lazy"><span class="cap">Cohort heatmap</span>
+          </button>
+          <div class="thumbs">
+            <button class="shot" type="button" data-full="assets/img/loan-trend.webp" data-caption="Delinquency trend over time"><img src="assets/img/loan-trend.webp" width="1600" height="800" alt="Delinquency trend line chart" loading="lazy"><span class="cap">Trend</span></button>
+            <button class="shot" type="button" data-full="assets/img/loan-cure.webp" data-caption="Never delinquent vs. cured vs. chronic"><img src="assets/img/loan-cure.webp" width="1300" height="910" alt="Bar chart of never delinquent, cured and chronic loans" loading="lazy"><span class="cap">Cure vs chronic</span></button>
+            <button class="shot" type="button" data-full="assets/img/loan-distribution.webp" data-caption="Distribution of delinquent amounts"><img src="assets/img/loan-distribution.webp" width="1600" height="800" alt="Distribution of delinquency amounts" loading="lazy"><span class="cap">Exposure</span></button>
+            <button class="shot" type="button" data-full="assets/img/loan-top10.webp" data-caption="Top 10 delinquent loans by exposure"><img src="assets/img/loan-top10.webp" width="1600" height="800" alt="Top ten delinquent loans by amount" loading="lazy"><span class="cap">Top 10</span></button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2. HR attrition -->
+      <article class="case flip">
+        <div class="case-text">
+          <div class="tags"><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag plain">People analytics</span></div>
+          <h3>HR &amp; Workforce Attrition Analytics</h3>
+          <p class="summary">An interactive two-page dashboard on why people leave: attrition across departments, demographics and tenure, with a KPI layer designed for leadership review.</p>
+          <div class="facts">
+            <div class="fact"><b class="hot">16.12%</b><span>attrition rate across 1,470 employees</span></div>
+            <div class="fact"><b>20.63%</b><span>attrition in Sales, the highest department</span></div>
+            <div class="fact"><b>4.56 yrs</b><span>average tenure</span></div>
+            <div class="fact"><b>53.6%</b><span>of leavers worked overtime</span></div>
+          </div>
+          <ul class="points">
+            <li>KPI band: headcount, attrition, retention, tenure, average salary.</li>
+            <li>Drivers page: years at company, job satisfaction, business travel, overtime.</li>
+            <li>Slicers for year, department, age group, gender, tenure and ethnicity.</li>
+          </ul>
+          <div class="links">
+            <a href="https://github.com/Rafay-001/HR-and-workforce-attrition-analytics-dashboard" target="_blank" rel="noopener">Repository ↗</a>
+          </div>
+        </div>
+        <div class="case-media">
+          <button class="shot" type="button" data-full="assets/img/hr-overview.webp" data-caption="Attrition overview: KPIs, department, trend and drivers">
+            <img src="assets/img/hr-overview.webp" width="981" height="570" alt="Power BI HR attrition overview dashboard with KPI band, attrition by department and trend" loading="lazy"><span class="cap">Overview</span>
+          </button>
+          <button class="shot" type="button" data-full="assets/img/hr-drivers.webp" data-caption="Attrition drivers deep dive">
+            <img src="assets/img/hr-drivers.webp" width="985" height="571" alt="Attrition drivers page: years at company, job satisfaction, business travel, overtime" loading="lazy"><span class="cap">Drivers deep dive</span>
+          </button>
+        </div>
+      </article>
+
+      <!-- 3. Arctic -->
+      <article class="case">
+        <div class="case-text">
+          <div class="tags"><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Data modelling</span><span class="tag plain">Supply chain</span></div>
+          <h3>Arctic Star Supplies BI Dashboard</h3>
+          <p class="summary">My final course project at HSE University. A specialty-food importer needed to track revenue, shipping costs, order processing time and manager performance across 2013–2015.</p>
+          <div class="facts">
+            <div class="fact"><b>7</b><span>source tables plus a custom calendar table</span></div>
+            <div class="fact"><b>3</b><span>report pages with button navigation</span></div>
+            <div class="fact"><b>8 days</b><span>average order processing time, tracked per manager</span></div>
+            <div class="fact"><b class="hot">89.89</b><span>orders per manager</span></div>
+          </div>
+          <ul class="points">
+            <li>Relational data model across customers, orders, order details, products, categories, employees and shippers.</li>
+            <li>DAX time intelligence (YTD, prior year, YoY growth) on a 2013–2015 calendar.</li>
+            <li>Pages: Executive Summary, Product &amp; Order Analysis, Manager's Performance.</li>
+          </ul>
+          <div class="links">
+            <a href="https://github.com/Rafay-001/arctic-supplies-dashboard-Power-BI" target="_blank" rel="noopener">Repository ↗</a>
+            <a href="https://github.com/Rafay-001/arctic-supplies-dashboard-Power-BI/blob/main/Arctic%20Star%20Supplies%20Dashboard.pdf" target="_blank" rel="noopener">PDF export ↗</a>
+          </div>
+        </div>
+        <div class="case-media">
+          <button class="shot" type="button" data-full="assets/img/arctic-executive.webp" data-caption="Executive Summary">
+            <img src="assets/img/arctic-executive.webp" width="1522" height="880" alt="Executive summary page with revenue KPIs, revenue trend, top employees and revenue by country" loading="lazy"><span class="cap">Executive summary</span>
+          </button>
+          <div class="thumbs">
+            <button class="shot" type="button" data-full="assets/img/arctic-cover.webp" data-caption="Report navigation page"><img src="assets/img/arctic-cover.webp" width="1522" height="880" alt="Navigation landing page" loading="lazy"><span class="cap">Navigation</span></button>
+            <button class="shot" type="button" data-full="assets/img/arctic-products.webp" data-caption="Product &amp; Order Analysis"><img src="assets/img/arctic-products.webp" width="1522" height="880" alt="Product and order analysis page" loading="lazy"><span class="cap">Products</span></button>
+            <button class="shot" type="button" data-full="assets/img/arctic-managers.webp" data-caption="Manager's Performance"><img src="assets/img/arctic-managers.webp" width="1522" height="880" alt="Manager performance page" loading="lazy"><span class="cap">Managers</span></button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 4. Movies -->
+      <article class="case flip wide-media">
+        <div class="case-text">
+          <div class="tags"><span class="tag">Power BI</span><span class="tag">Power Query</span><span class="tag">DAX</span><span class="tag plain">Media</span></div>
+          <h3>Movies Insights Dashboard</h3>
+          <p class="summary">Raw CSVs of movies, users and ratings, cleaned in Power Query and modelled into a three-page report on what audiences watch and how they rate it.</p>
+          <ul class="points">
+            <li>Data cleaning and genre expansion in Power Query before modelling.</li>
+            <li>A dedicated measures table: totals, average ratings, splits by gender and age group, movies by decade.</li>
+            <li>Decade, genre, occupation and age-group slicers shared across pages.</li>
+          </ul>
+          <div class="links">
+            <a href="https://github.com/Rafay-001/movies_insights_dashboard" target="_blank" rel="noopener">Repository ↗</a>
+          </div>
+        </div>
+        <div class="case-media">
+          <div class="report-map" role="img" aria-label="Structure of the three report pages">
+            <div class="bar"><i></i><i></i><i></i><span>Movies_dashboard.pbix · 3 pages</span></div>
+            <div class="pages">
+              <div class="page">
+                <span class="label">Page 1</span>
+                <h4>Movies &amp; Ratings Overview</h4>
+                <ul>
+                  <li><code>card</code>Total movies, users, genres</li>
+                  <li><code>gauge</code>Average rating</li>
+                  <li><code>100% col</code>Rating by genre and gender</li>
+                  <li><code>bar</code>Movies by decade</li>
+                </ul>
+              </div>
+              <div class="page">
+                <span class="label">Page 2</span>
+                <h4>User Demographics &amp; Professions</h4>
+                <ul>
+                  <li><code>card</code>Male and female users</li>
+                  <li><code>column</code>Users by age group</li>
+                  <li><code>map</code>Users by zip code</li>
+                  <li><code>matrix</code>Rating by occupation × age</li>
+                </ul>
+              </div>
+              <div class="page">
+                <span class="label">Page 3</span>
+                <h4>Top Titles &amp; Trends</h4>
+                <ul>
+                  <li><code>area</code>Average rating by release year</li>
+                  <li><code>scatter</code>Rating vs. users by age</li>
+                  <li><code>treemap</code>Top-rated titles</li>
+                  <li><code>pie</code>Genre share</li>
+                </ul>
+              </div>
+            </div>
+            <div class="measures">
+              <span class="label">DAX</span>
+              <code>[Total Movies]</code><code>[Avg Rating]</code><code>[Total Users]</code><code>[Movies by Decade]</code><code>[Female Users]</code>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="block" id="skills" aria-labelledby="skills-h">
+    <div class="wrap">
+      <div class="sec-head"><h2 id="skills-h">Toolkit</h2><p>What I use day to day, from raw extract to executive report.</p></div>
+      <div class="skills">
+        <div class="skill"><span class="label">Business intelligence</span><h3>Power BI</h3>
+          <ul><li>DAX &amp; time intelligence</li><li>Power Query (M)</li><li>Data visualisation</li><li>Executive reporting</li></ul></div>
+        <div class="skill"><span class="label">Data &amp; analytics</span><h3>SQL &amp; Python</h3>
+          <ul><li>Pandas, NumPy</li><li>Matplotlib, Seaborn</li><li>Statistical analysis</li><li>Data modelling</li></ul></div>
+        <div class="skill"><span class="label">Modern data stack</span><h3>Fabric &amp; Databricks</h3>
+          <ul><li>Microsoft Fabric</li><li>Databricks</li><li>ETL / ELT pipelines</li><li>Data governance</li></ul></div>
+        <div class="skill"><span class="label">Domain focus</span><h3>People &amp; finance</h3>
+          <ul><li>HR &amp; people analytics</li><li>Workforce reporting</li><li>Banking &amp; credit risk</li><li>Financial services</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="background" aria-labelledby="bg-h">
+    <div class="wrap">
+      <div class="sec-head"><h2 id="bg-h">Background</h2></div>
+      <div class="bg-grid">
+        <div class="card">
+          <span class="label">Experience &amp; education</span>
+          <div class="entry">
+            <h3>BI &amp; Workforce Analytics</h3>
+            <p>3+ years building enterprise Power BI dashboards and workforce analytics for a US-based professional services firm.</p>
+          </div>
+          <div class="entry">
+            <h3>MSc, Data Analytics for Business &amp; Economics</h3>
+            <p>HSE University, Saint Petersburg, Russia. Fully funded government scholarship.</p>
+          </div>
+        </div>
+        <div class="card">
+          <span class="label">Certifications</span>
+          <div class="entry">
+            <span class="pill">In progress</span>
+            <h3>Microsoft Certified: Fabric Analytics Engineer Associate (DP-600)</h3>
+          </div>
+          <div class="entry">
+            <span class="pill done">Earned</span>
+            <h3>Databricks Fundamentals Accreditation</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section class="contact" id="contact" aria-labelledby="contact-h">
+  <div class="wrap">
+    <span class="label" style="color: inherit; opacity: .7">Contact</span>
+    <h2 id="contact-h">Let's talk about your data.</h2>
+    <p>I'm looking for BI, people analytics and data analyst roles. The fastest way to reach me is email or LinkedIn.</p>
+    <div class="row">
+      <a class="btn primary" href="mailto:rafay.ciddiqui@gmail.com">Email me</a>
+      <button class="btn" type="button" id="copy-email">Copy address</button>
+      <span class="email" id="email-text">rafay.ciddiqui@gmail.com</span>
+    </div>
+    <div class="row">
+      <a class="btn" href="https://www.linkedin.com/in/rafay-ciddiqui" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="btn" href="https://github.com/Rafay-001" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="wrap"><span>© <span id="yr">2026</span> Rafay Siddiqui</span><span>Karachi, Pakistan</span></div>
+</footer>
+
+<dialog class="lb" id="lb" aria-label="Enlarged screenshot">
+  <figure>
+    <img id="lb-img" src="" alt="">
+    <figcaption><span id="lb-cap"></span><button type="button" id="lb-close">Close</button></figcaption>
+  </figure>
+</dialog>
+
+<script>
+(function () {
+  var lb = document.getElementById('lb'), img = document.getElementById('lb-img'), cap = document.getElementById('lb-cap');
+  document.querySelectorAll('.shot').forEach(function (b) {
+    b.addEventListener('click', function () {
+      img.src = b.dataset.full; img.alt = b.querySelector('img').alt; cap.textContent = b.dataset.caption || '';
+      if (lb.showModal) lb.showModal();
+    });
+  });
+  document.getElementById('lb-close').addEventListener('click', function () { lb.close(); });
+  lb.addEventListener('click', function (e) { if (e.target === lb) lb.close(); });
+
+  var copy = document.getElementById('copy-email'), addr = document.getElementById('email-text');
+  copy.addEventListener('click', function () {
+    var done = function () { copy.textContent = 'Copied'; setTimeout(function () { copy.textContent = 'Copy address'; }, 1800); };
+    var fallback = function () { var r = document.createRange(); r.selectNodeContents(addr); var s = getSelection(); s.removeAllRanges(); s.addRange(r); copy.textContent = 'Selected, press Ctrl+C'; };
+    try { navigator.clipboard.writeText(addr.textContent).then(done, fallback); } catch (e) { fallback(); }
+  });
+  document.getElementById('yr').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>

@@ -18,13 +18,13 @@ Business Intelligence and Data Analyst with 3+ years of experience building ente
 
 ## Featured Projects
 
-**[Loan Delinquency & Repayment Behavior Analysis](https://github.com/Rafay-001/Loan-Delinquency-and-Repayment-Behavior-Analysis)**
+**[Loan Delinquency & Repayment Behavior Analysis](https://github.com/Rafay-001/credit-risk-and-loan-delinquency-analysis)**
 Exploratory analysis of loan repayment data identifying delinquency drivers and risk segments, with business recommendations for collections strategy. Python, Pandas, cohort analysis.
 
-**[HR Attrition & Retention Analytics Dashboard](https://github.com/Rafay-001/HR-Attrition-Analytics-Dashboard)**
+**[HR Attrition & Retention Analytics Dashboard](https://github.com/Rafay-001/HR-and-workforce-attrition-analytics-dashboard)**
 Interactive Power BI dashboard analyzing workforce attrition patterns across departments and demographics, with a KPI framework built for leadership decision-making.
 
-**[Arctic Supplies BI Dashboard](https://github.com/Rafay-001/Arctic-Supplies-Dashboard-Power-BI-Poe)**
+**[Arctic Supplies BI Dashboard](https://github.com/Rafay-001/arctic-supplies-dashboard-Power-BI)**
 Multi-page Power BI dashboard covering executive summary, product/order analysis, and manager performance for a supply chain business — built as part of my MSc coursework at HSE University.
 
 ---
