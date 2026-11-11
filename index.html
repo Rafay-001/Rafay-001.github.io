@@ -12,35 +12,35 @@
 <script>try { var t = localStorage.getItem('theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
 /* Layout: a single reading column (~1120px) — hero with real KPI figures, then case studies that alternate text/screens, then skills and contact. */
 :root {
-  --bg: #f4f6f5;
+  --bg: #f5f6f8;
   --surface: #ffffff;
-  --ink: #13212b;
-  --muted: #56656e;
-  --line: #d8dfdd;
-  --accent: #0e6f68;        /* ledger teal */
-  --accent-soft: #dcefeb;
-  --mark: #c9861a;          /* marigold highlight, used sparingly */
-  --shot-bg: #e9eeec;
-  --f-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
-  --f-body: "Instrument Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
-  --f-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --ink: #111418;
+  --muted: #5c636e;
+  --line: #dfe2e7;
+  --accent: #2f5fe0;        /* graphite blue */
+  --accent-soft: #e4ebfd;
+  --mark: #2f5fe0;          /* key-number highlight */
+  --shot-bg: #eceef2;
+  --f-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+  --f-body: "IBM Plex Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
   --wrap: 1120px;
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #0e1519; --surface: #151f24; --ink: #e7eeec; --muted: #9aaab0; --line: #26343a;
-    --accent: #4fc3b5; --accent-soft: #163632; --mark: #e8ad4c; --shot-bg: #1b272c;
+    --bg: #0c0e12; --surface: #14171d; --ink: #e9ecf1; --muted: #9299a5; --line: #252a33;
+    --accent: #7aa0ff; --accent-soft: #1a2440; --mark: #7aa0ff; --shot-bg: #181c23;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #0e1519; --surface: #151f24; --ink: #e7eeec; --muted: #9aaab0; --line: #26343a;
-  --accent: #4fc3b5; --accent-soft: #163632; --mark: #e8ad4c; --shot-bg: #1b272c;
+  --bg: #0c0e12; --surface: #14171d; --ink: #e9ecf1; --muted: #9299a5; --line: #252a33;
+  --accent: #7aa0ff; --accent-soft: #1a2440; --mark: #7aa0ff; --shot-bg: #181c23;
   color-scheme: dark;
 }
 
@@ -99,7 +99,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .hero .status { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 28px; }
 .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
 .hero h1 {
-  font-size: clamp(44px, 8.5vw, 104px); font-weight: 800; letter-spacing: -.035em; line-height: .95;
+  font-size: clamp(44px, 8.5vw, 104px); font-weight: 700; letter-spacing: -.04em; line-height: .95;
 }
 .hero h1 .role { display: block; font-weight: 500; color: var(--muted); font-size: .42em; letter-spacing: -.015em; margin-top: 18px; line-height: 1.15; }
 .hero h1 .role em { font-style: normal; color: var(--accent); }
@@ -232,13 +232,14 @@ details ol { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
 .entry h3 { font-size: 19px; font-weight: 700; line-height: 1.25; }
 .entry p { color: var(--muted); font-size: 15.5px; }
 .pill { justify-self: start; font: 500 11.5px/1 var(--f-mono); padding: 5px 8px; border-radius: 999px; border: 1px solid var(--mark); color: var(--mark); }
-.pill.done { border-color: var(--accent); color: var(--accent); }
+.pill { border-style: dashed; color: var(--muted); border-color: var(--muted); }
+.pill.done { border-style: solid; border-color: var(--accent); color: var(--accent); }
 @media (max-width: 760px) { .bg-grid { grid-template-columns: minmax(0, 1fr); } }
 
 /* ---------- contact ---------- */
 .contact { background: var(--ink); color: var(--bg); }
 .contact .wrap { padding-block: 80px; display: grid; gap: 28px; }
-.contact h2 { font-size: clamp(36px, 6vw, 68px); font-weight: 800; letter-spacing: -.03em; max-width: 16ch; }
+.contact h2 { font-size: clamp(36px, 6vw, 68px); font-weight: 700; letter-spacing: -.03em; max-width: 16ch; }
 .contact p { max-width: 58ch; opacity: .8; font-size: 18px; }
 .contact .row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
 .contact .btn { background: transparent; color: var(--bg); border-color: color-mix(in srgb, var(--bg) 35%, transparent); }
@@ -250,11 +251,11 @@ footer .wrap { padding-block: 22px 32px; border-top: 1px solid color-mix(in srgb
 
 /* ---------- lightbox ---------- */
 dialog.lb { border: 0; padding: 0; background: transparent; max-width: min(1400px, 96vw); width: 100%; }
-dialog.lb::backdrop { background: rgba(8, 14, 17, .86); }
+dialog.lb::backdrop { background: rgba(9, 11, 15, .88); }
 dialog.lb figure { margin: 0; display: grid; gap: 12px; }
 dialog.lb img { width: 100%; height: auto; max-height: 82vh; object-fit: contain; border-radius: 10px; background: #fff; }
-dialog.lb figcaption { color: #e7eeec; font: 500 14px/1.4 var(--f-body); display: flex; justify-content: space-between; gap: 12px; align-items: center; }
-dialog.lb button { font: 600 14px/1 var(--f-body); background: #e7eeec; color: #13212b; border: 0; border-radius: 999px; padding: 10px 16px; cursor: pointer; }
+dialog.lb figcaption { color: #e9ecf1; font: 500 14px/1.4 var(--f-body); display: flex; justify-content: space-between; gap: 12px; align-items: center; }
+dialog.lb button { font: 600 14px/1 var(--f-body); background: #e9ecf1; color: #111418; border: 0; border-radius: 999px; padding: 10px 16px; cursor: pointer; }
 
 /* gentle load-in from a visible resting state */
 @keyframes rise { from { transform: translateY(10px); } to { transform: none; } }
