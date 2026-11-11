@@ -9,6 +9,7 @@
 <meta property="og:title" content="Rafay Siddiqui · Data Portfolio">
 <meta property="og:description" content="Power BI dashboards, credit risk analysis and HR analytics.">
 <meta property="og:image" content="assets/img/loan-cohort.webp">
+<script>try { var t = localStorage.getItem('theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
@@ -80,6 +81,17 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .nav ul { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; }
 .nav ul a { color: var(--muted); text-decoration: none; font-size: 15px; font-weight: 500; }
 .nav ul a:hover { color: var(--ink); }
+.nav .wrap > ul { margin-left: auto; }
+.theme-toggle {
+  flex: none; width: 40px; height: 40px; border-radius: 999px; display: grid; place-items: center; cursor: pointer;
+  background: var(--surface); color: var(--ink); border: 1px solid var(--line); transition: border-color .15s, transform .3s;
+}
+.theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+.theme-toggle:active { transform: rotate(-20deg); }
+.theme-toggle svg { width: 19px; height: 19px; grid-area: 1 / 1; }
+.theme-toggle .i-sun { display: none; }
+.is-dark .theme-toggle .i-sun { display: block; }
+.is-dark .theme-toggle .i-moon { display: none; }
 @media (max-width: 640px) { .nav ul li:not(:last-child) { display: none; } }
 
 /* ---------- hero ---------- */
@@ -262,6 +274,10 @@ dialog.lb button { font: 600 14px/1 var(--f-body); background: #e7eeec; color: #
       <li><a href="#background">Background</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
+    <button class="theme-toggle" type="button" id="theme-toggle" aria-label="Switch to dark theme" title="Switch theme">
+      <svg class="i-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+      <svg class="i-sun" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.8"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </button>
   </div>
 </nav>
 
@@ -569,6 +585,24 @@ dialog.lb button { font: 600 14px/1 var(--f-body); background: #e7eeec; color: #
     try { navigator.clipboard.writeText(addr.textContent).then(done, fallback); } catch (e) { fallback(); }
   });
   document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // Light / dark switch: follows the device until the visitor picks, then remembers the pick.
+  var root = document.documentElement, btn = document.getElementById('theme-toggle');
+  var mq = window.matchMedia ? matchMedia('(prefers-color-scheme: dark)') : null;
+  function current() { return root.getAttribute('data-theme') || (mq && mq.matches ? 'dark' : 'light'); }
+  function paint() {
+    var dark = current() === 'dark';
+    root.classList.toggle('is-dark', dark);
+    btn.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
+  }
+  btn.addEventListener('click', function () {
+    var next = current() === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+    paint();
+  });
+  if (mq && mq.addEventListener) mq.addEventListener('change', paint);
+  paint();
 })();
 </script>
 </body>
